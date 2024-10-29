@@ -1,0 +1,170 @@
+/*
+ * stm32xx.h
+ *
+ *  Created on: Oct 18, 2024
+ *      Author: Alparslan
+ */
+
+#ifndef INC_STM32XX_H_
+#define INC_STM32XX_H_
+
+#include<stdint.h>
+#define __IO volatile
+
+
+/*
+ * Memory base address
+ */
+
+
+
+#define FLASH_BASE_ADDR     (0x08000000UL)/*flash base address*/
+#define SRAM1_BASE_ADDR	    (0x20000000UL)/*sram1 address*/
+#define SRAM2_BASE_ADDR		(0x2001C000UL)/*sram2 address*/
+
+
+/*
+ * peripheral (cevresel) base address
+ */
+
+#define PERIPH_BASE_ADDR (0x40000000UL)/*cevresel birimler base adresi*/
+
+#define APB1_BASE_ADDR 		PERIPH_BASE_ADDR
+#define APB2_BASE_ADDR      (PERIPH_BASE_ADDR + 0x00010000UL)
+#define AHB1_BASE_ADDR		(PERIPH_BASE_ADDR + 0x00020000UL)
+#define AHB2_BASE_ADDR		(PERIPH_BASE_ADDR + 0x10000000UL)
+#define AHB3_BASE_ADDR		(PERIPH_BASE_ADDR + 0x60000000UL)
+
+/*
+ * apb1 CEVRESEL BİRİMLERİNİ YAZ) base address
+ */
+
+#define TIM2_BASE_ADDR       APB1_BASE_ADDR
+#define TIM3_BASE_ADDR		(APB1_BASE_ADDR + 0x00000400UL)
+#define TIM4_BASE_ADDR		(APB1_BASE_ADDR + 0x00000800UL)
+#define TIM5_BASE_ADDR		(APB1_BASE_ADDR + 0x00000C00UL)
+#define TIM6_BASE_ADDR		(APB1_BASE_ADDR + 0x00001000UL)
+#define TIM7_BASE_ADDR		(APB1_BASE_ADDR + 0x00001400UL)
+#define TIM12_BASE_ADDR		(APB1_BASE_ADDR + 0x00001800UL)
+#define TIM13_BASE_ADDR		(APB1_BASE_ADDR + 0x00001C00UL)
+#define TIM14_BASE_ADDR		(APB1_BASE_ADDR + 0x00002000UL)
+
+#define WWDG_BASE_ADDR		(APB1_BASE_ADDR + 0x00002C00UL)
+#define IWDG_BASE_ADDR		(APB1_BASE_ADDR + 0x00003000UL)
+
+#define SPI2_BASE_ADDR		(APB1_BASE_ADDR + 0x00003800UL)
+#define SPI3_BASE_ADDR		(APB1_BASE_ADDR + 0x00003C00UL)
+
+#define USART2_BASE_ADDR	(APB1_BASE_ADDR + 0x00004400UL)
+#define USART3_BASE_ADDR	(APB1_BASE_ADDR + 0x00004800UL)
+#define UART4_BASE_ADDR	    (APB1_BASE_ADDR + 0x00004C00UL)
+#define UART5_BASE_ADDR	    (APB1_BASE_ADDR + 0x00005000UL)
+
+#define I2C1_BASE_ADDR	    (APB1_BASE_ADDR + 0x00005400UL)
+#define I2C2_BASE_ADDR	    (APB1_BASE_ADDR + 0x00005800UL)
+#define I2C3_BASE_ADDR	    (APB1_BASE_ADDR + 0x00005C00UL)
+
+/*
+ * apb2 CEVRESEL BİRİMLERİNİ YAZ) base address
+ */
+
+#define TIM1_BASE_ADDR       APB2_BASE_ADDR
+#define TIM8_BASE_ADDR      (APB2_BASE_ADDR + 0x00000400UL)
+#define TIM8_BASE_ADDR      (APB2_BASE_ADDR + 0x00000400UL)
+#define USART1_BASE_ADDR    (APB2_BASE_ADDR + 0x00001000UL)
+#define USART6_BASE_ADDR    (APB2_BASE_ADDR + 0x00001400UL)
+#define SPI1_BASE_ADDR		(APB2_BASE_ADDR + 0x00003000UL)
+#define SPI4_BASE_ADDR		(APB2_BASE_ADDR + 0x00003400UL)
+#define SYSCFG_BASE_ADDR    (APB2_BASE_ADDR + 0x00003800UL)
+#define EXTI_BASE_ADDR		(APB2_BASE_ADDR + 0x00003C00UL)
+/*
+ * ahb1 CEVRESEL BİRİMLERİNİ YAZ) base address
+ */
+#define GPIOA_BASE_ADDR      AHB1_BASE_ADDR
+#define GPIOB_BASE_ADDR     (AHB1_BASE_ADDR + 0x00000400UL)
+#define GPIOC_BASE_ADDR     (AHB1_BASE_ADDR + 0x00000800UL)
+#define GPIOD_BASE_ADDR     (AHB1_BASE_ADDR + 0x00000C00UL)
+#define GPIOE_BASE_ADDR     (AHB1_BASE_ADDR + 0x00001000UL)
+#define GPIOF_BASE_ADDR     (AHB1_BASE_ADDR + 0x00001400UL)
+#define GPIOG_BASE_ADDR     (AHB1_BASE_ADDR + 0x00001800UL)
+#define GPIOH_BASE_ADDR     (AHB1_BASE_ADDR + 0x00001C00UL)
+#define GPIOI_BASE_ADDR     (AHB1_BASE_ADDR + 0x00002000UL)
+#define GPIOJ_BASE_ADDR     (AHB1_BASE_ADDR + 0x00002400UL)
+#define GPIOK_BASE_ADDR     (AHB1_BASE_ADDR + 0x00002800UL)
+#define RCC_BASE_ADDR       (AHB1_BASE_ADDR + 0x00003800UL)
+
+/*
+ * structlar yapılar
+ */
+
+typedef struct
+{
+
+	__IO uint32_t MODER;
+	__IO uint32_t OTYPER;
+	__IO uint32_t OSPEEDR;
+	__IO uint32_t PUPDR;
+	__IO uint32_t IDR;
+	__IO uint32_t ODR;
+	__IO uint32_t BSRR;
+	__IO uint32_t LCKR;
+	__IO uint32_t AFR[2];
+
+
+
+}GPIO_TypeDef_t;
+
+
+typedef struct
+{
+	__IO uint32_t CR;
+	__IO uint32_t PLLCFGR;
+	__IO uint32_t CFGR;
+	__IO uint32_t CIR;
+	__IO uint32_t AHB1RSTR;
+	__IO uint32_t AHB2RSTR;
+	__IO uint32_t AHB3RSTR;
+	__IO uint32_t RESERVED0;
+	__IO uint32_t APB1RSTR;
+	__IO uint32_t APB2RSTR;
+	__IO uint32_t RESERVED1;
+	__IO uint32_t RESERVED2;
+	__IO uint32_t AHB1ENR;
+	__IO uint32_t AHB2ENR;
+	__IO uint32_t AHB3ENR;
+	__IO uint32_t RESERVED3;
+	__IO uint32_t APB1ENR;
+
+
+
+}RCC_TypeDef_t;
+
+
+
+#define GPIOA    ((GPIO_TypeDef_t *)(GPIOA_BASE_ADDR))
+#define GPIOB    ((GPIO_TypeDef_t *)(GPIOB_BASE_ADDR))
+#define GPIOC    ((GPIO_TypeDef_t *)(GPIOC_BASE_ADDR))
+#define GPIOD    ((GPIO_TypeDef_t *)(GPIOD_BASE_ADDR))
+#define GPIOE    ((GPIO_TypeDef_t *)(GPIOE_BASE_ADDR))
+#define GPIOF    ((GPIO_TypeDef_t *)(GPIOF_BASE_ADDR))
+#define GPIOG    ((GPIO_TypeDef_t *)(GPIOG_BASE_ADDR))
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+#endif /* INC_STM32XX_H_ */
